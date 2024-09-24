@@ -22,7 +22,10 @@ const HomeScreen = () => {
       />
       <View style={styles.searchPosition}>
         <View style={styles.SearchSize}>
-          <SearchField onPress={() => console.log('search')} />
+          <SearchField
+            onPress={() => console.log('search')}
+            ontouch={() => console.log('Notif')}
+          />
         </View>
       </View>
       <Animated.ScrollView

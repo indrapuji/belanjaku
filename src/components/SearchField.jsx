@@ -1,8 +1,9 @@
 import {Notification, SearchIcon} from '@assets/svg';
 import React from 'react';
-import {View, Text, Pressable} from 'react-native';
+import {View, Text, Pressable, TouchableOpacity} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
-const SearchField = ({onPress}) => {
+const SearchField = ({onPress, ontouch}) => {
   return (
     <View style={{flexDirection: 'row', alignItems: 'center'}}>
       <View
@@ -30,7 +31,9 @@ const SearchField = ({onPress}) => {
         </Pressable>
       </View>
       <View style={{flex: 1, alignItems: 'center'}}>
-        <SearchIcon />
+        <TouchableOpacity onPress={ontouch}>
+          <Icon name="notifications" color="grey" size={30} />
+        </TouchableOpacity>
       </View>
     </View>
   );
