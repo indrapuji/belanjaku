@@ -6,6 +6,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import {useNavigation} from '@react-navigation/native';
+
 const CustomButton = ({flatListRef, flatListIndex, dataLength}) => {
   const navigation = useNavigation();
 
@@ -18,6 +19,7 @@ const CustomButton = ({flatListRef, flatListIndex, dataLength}) => {
       height: 60,
     };
   });
+
   const arrowAnimationStyle = useAnimatedStyle(() => {
     return {
       width: 30,
@@ -34,6 +36,7 @@ const CustomButton = ({flatListRef, flatListIndex, dataLength}) => {
       ],
     };
   });
+
   const textAnimationStyle = useAnimatedStyle(() => {
     return {
       opacity:
@@ -48,6 +51,7 @@ const CustomButton = ({flatListRef, flatListIndex, dataLength}) => {
       ],
     };
   });
+
   return (
     <TouchableWithoutFeedback
       onPress={() => {

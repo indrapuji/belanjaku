@@ -5,6 +5,7 @@ import Animated, {
   interpolate,
   Extrapolation,
 } from 'react-native-reanimated';
+
 const Pagination = ({data, x, screenWidth}) => {
   const PaginationComp = ({i}) => {
     const animatedDotStyle = useAnimatedStyle(() => {
