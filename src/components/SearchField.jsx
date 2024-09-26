@@ -6,21 +6,30 @@ import {
   Pressable,
   TouchableOpacity,
   StyleSheet,
+  useWindowDimensions,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const SearchField = ({onPress, ontouch}) => {
+  const {width} = useWindowDimensions();
+
+  const SCREEN_WIDTH = width - 32;
   return (
     <View style={styles.headerContainer}>
-      <View style={styles.searchContainer}>
+      <View style={[styles.searchContainer, {width: SCREEN_WIDTH - 40}]}>
         <SearchIcon />
         <Pressable style={styles.searchIndent} onPress={onPress}>
           <Text style={styles.searchText}>Search something...?</Text>
         </Pressable>
       </View>
-      <View style={styles.iconPosition}>
+      <View style={{width: SCREEN_WIDTH - (SCREEN_WIDTH + 40)}}>
         <TouchableOpacity onPress={ontouch}>
-          <Icon name="notifications" color="grey" size={30} />
+          <Icon
+            name="notifications"
+            color="grey"
+            size={30}
+            style={{paddingHorizontal: 10}}
+          />
         </TouchableOpacity>
       </View>
     </View>
@@ -42,7 +51,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1,
     borderColor: 'grey',
-    flex: 5,
   },
   searchIndent: {
     paddingVertical: 12,
@@ -53,7 +61,6 @@ const styles = StyleSheet.create({
     color: 'grey',
   },
   iconPosition: {
-    flex: 1,
-    alignItems: 'center',
+    // alignItems: 'center',
   },
 });

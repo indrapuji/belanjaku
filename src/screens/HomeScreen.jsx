@@ -1,19 +1,28 @@
-import {StyleSheet, Text, View, Animated} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Animated,
+  useWindowDimensions,
+} from 'react-native';
 import React, {useRef} from 'react';
 import SearchField from '@components/SearchField';
 import {iphoneHasNotch} from '@utils/deviceinfo';
+import Carousel from 'react-native-reanimated-carousel';
 
 const HomeScreen = () => {
   const scroll = useRef(new Animated.Value(0)).current;
 
+  const {width} = useWindowDimensions();
+
   return (
-    <View>
+    <View style={{backgroundColor: 'white'}}>
       <Animated.View
         style={[
           styles.searchContainer,
           {
             opacity: scroll.interpolate({
-              inputRange: [0, 100, 200],
+              inputRange: [0, 10, 200],
               outputRange: [0, 0, 1],
               extrapolate: 'clamp',
             }),
@@ -37,7 +46,27 @@ const HomeScreen = () => {
         )}
         scrollEventThrottle={16}
         showsVerticalScrollIndicator={false}>
-        {/* View */}
+        <View style={{marginVertical: 16}}>
+          <Carousel
+            loop
+            width={width}
+            height={width / 2}
+            autoPlay={true}
+            data={[...new Array(6).keys()]}
+            scrollAnimationDuration={1000}
+            // onSnapToItem={index => console.log('current index:', index)}
+            renderItem={({index}) => (
+              <View
+                style={{
+                  flex: 1,
+                  borderWidth: 1,
+                  justifyContent: 'center',
+                }}>
+                <Text style={{textAlign: 'center', fontSize: 30}}>{index}</Text>
+              </View>
+            )}
+          />
+        </View>
       </Animated.ScrollView>
     </View>
   );
