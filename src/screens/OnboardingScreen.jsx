@@ -8,7 +8,7 @@ import Animated, {
   interpolate,
   Extrapolation,
 } from 'react-native-reanimated';
-import data from '@data/data';
+import onboardingData from '@data/onboardingData';
 import Pagination from '@components/Pagination';
 import CustomButton from '@components/CustomButton';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -106,7 +106,7 @@ const OnboardingScreen = () => {
       <Animated.FlatList
         ref={flatListRef}
         onScroll={onScroll}
-        data={data}
+        data={onboardingData}
         renderItem={({item, index}) => {
           return <RenderItem item={item} index={index} />;
         }}
@@ -123,11 +123,11 @@ const OnboardingScreen = () => {
         }}
       />
       <View style={styles.bottomContainer}>
-        <Pagination data={data} x={x} screenWidth={SCREEN_WIDTH} />
+        <Pagination data={onboardingData} x={x} screenWidth={SCREEN_WIDTH} />
         <CustomButton
           flatListRef={flatListRef}
           flatListIndex={flatListIndex}
-          dataLength={data.length}
+          dataLength={onboardingData.length}
         />
       </View>
     </SafeAreaView>

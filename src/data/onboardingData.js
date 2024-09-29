@@ -1,4 +1,4 @@
-const data = [
+const onboardingData = [
   {
     id: 1,
     image: require('../assets/image/image1.png'),
@@ -19,4 +19,4 @@ const data = [
   },
 ];
 
-export default data;
+export default onboardingData;

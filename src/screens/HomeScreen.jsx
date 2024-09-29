@@ -4,16 +4,19 @@ import {
   View,
   Animated,
   useWindowDimensions,
+  TouchableOpacity,
+  FlatList,
 } from 'react-native';
 import React, {useRef} from 'react';
 import SearchField from '@components/SearchField';
 import {iphoneHasNotch} from '@utils/deviceinfo';
-import Carousel from 'react-native-reanimated-carousel';
+import HeadCarousel from '@components/HeadCarousel';
+import categoriesData from '@data/categoriesData';
+import Divider from '@components/Divider';
 
 const HomeScreen = () => {
   const scroll = useRef(new Animated.Value(0)).current;
-
-  const {width} = useWindowDimensions();
+  const {width: SCREEN_WIDTH} = useWindowDimensions();
 
   return (
     <View style={{backgroundColor: 'white'}}>
@@ -46,27 +49,70 @@ const HomeScreen = () => {
         )}
         scrollEventThrottle={16}
         showsVerticalScrollIndicator={false}>
-        <View style={{marginVertical: 16}}>
-          <Carousel
-            loop
-            width={width}
-            height={width / 2}
-            autoPlay={true}
-            data={[...new Array(6).keys()]}
-            scrollAnimationDuration={1000}
-            // onSnapToItem={index => console.log('current index:', index)}
-            renderItem={({index}) => (
-              <View
-                style={{
-                  flex: 1,
-                  borderWidth: 1,
-                  justifyContent: 'center',
-                }}>
-                <Text style={{textAlign: 'center', fontSize: 30}}>{index}</Text>
-              </View>
-            )}
-          />
+        <HeadCarousel />
+        <View
+          style={{
+            marginLeft: 16,
+          }}>
+          <Text style={{fontWeight: 'bold', fontSize: 16}}>Categories</Text>
         </View>
+        <View style={{marginVertical: 16}}>
+          {/* <FlatList
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            data={categoriesData}
+            keyExtractor={item => item.id.toString()}
+            renderItem={({item}) => {
+              return (
+                <TouchableOpacity style={{}}>
+                  <View
+                    style={{
+                      borderWidth: 1,
+                      borderRadius: 10,
+                      marginLeft: 16,
+                      width: (SCREEN_WIDTH - 16 * 5) / 4,
+                      height: (SCREEN_WIDTH - 16 * 5) / 4,
+                    }}
+                  />
+                </TouchableOpacity>
+              );
+            }}
+          /> */}
+          <View
+            style={{
+              flexDirection: 'row',
+            }}>
+            {categoriesData.map(items => {
+              return (
+                <View style={{}}>
+                  <TouchableOpacity style={{}}>
+                    <View
+                      key={items.id}
+                      style={{
+                        borderWidth: 1,
+                        borderRadius: 10,
+                        marginLeft: 16,
+                        width: (SCREEN_WIDTH - 16 * 5) / 4,
+                        height: (SCREEN_WIDTH - 16 * 5) / 4,
+                      }}>
+                      <Text
+                        style={{
+                          position: 'absolute',
+                          bottom: 6,
+                          alignSelf: 'center',
+                          fontWeight: 'bold',
+                          fontSize: 12,
+                        }}>
+                        {items.name}
+                      </Text>
+                    </View>
+                  </TouchableOpacity>
+                </View>
+              );
+            })}
+          </View>
+        </View>
+        <Divider />
       </Animated.ScrollView>
     </View>
   );
