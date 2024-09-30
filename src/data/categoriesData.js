@@ -1,23 +1,23 @@
 const categoriesData = [
   {
     id: 1,
-    name: 'Clothes',
-    image: 'https://i.imgur.com/QkIa5tT.jpeg',
+    name: 'electronics',
+    image: require('@assets/icon/electronics.png'),
   },
   {
     id: 2,
-    name: 'Electronics',
-    image: 'https://i.imgur.com/ZANVnHE.jpeg',
+    name: 'jewelery',
+    image: require('@assets/icon/jewelry.png'),
   },
   {
     id: 3,
-    name: 'Furniture',
-    image: 'https://i.imgur.com/Qphac99.jpeg',
+    name: "men's clothing",
+    image: require('@assets/icon/men.png'),
   },
   {
     id: 4,
-    name: 'Shoes',
-    image: 'https://i.imgur.com/qNOjJje.jpeg',
+    name: "women's clothing",
+    image: require('@assets/icon/electronics.png'),
   },
 ];
 

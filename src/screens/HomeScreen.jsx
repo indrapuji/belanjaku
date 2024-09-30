@@ -6,20 +6,21 @@ import {
   useWindowDimensions,
   TouchableOpacity,
   FlatList,
+  Image,
 } from 'react-native';
 import React, {useRef} from 'react';
 import SearchField from '@components/SearchField';
 import {iphoneHasNotch} from '@utils/deviceinfo';
 import HeadCarousel from '@components/HeadCarousel';
 import categoriesData from '@data/categoriesData';
-import Divider from '@components/Divider';
+import FastImage from 'react-native-fast-image';
 
 const HomeScreen = () => {
   const scroll = useRef(new Animated.Value(0)).current;
   const {width: SCREEN_WIDTH} = useWindowDimensions();
 
   return (
-    <View style={{backgroundColor: 'white'}}>
+    <View>
       <Animated.View
         style={[
           styles.searchContainer,
@@ -57,54 +58,35 @@ const HomeScreen = () => {
           <Text style={{fontWeight: 'bold', fontSize: 16}}>Categories</Text>
         </View>
         <View style={{marginVertical: 16}}>
-          {/* <FlatList
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            data={categoriesData}
-            keyExtractor={item => item.id.toString()}
-            renderItem={({item}) => {
-              return (
-                <TouchableOpacity style={{}}>
-                  <View
-                    style={{
-                      borderWidth: 1,
-                      borderRadius: 10,
-                      marginLeft: 16,
-                      width: (SCREEN_WIDTH - 16 * 5) / 4,
-                      height: (SCREEN_WIDTH - 16 * 5) / 4,
-                    }}
-                  />
-                </TouchableOpacity>
-              );
-            }}
-          /> */}
           <View
             style={{
               flexDirection: 'row',
             }}>
             {categoriesData.map(items => {
               return (
-                <View style={{}}>
+                <View key={items.id}>
                   <TouchableOpacity style={{}}>
                     <View
-                      key={items.id}
                       style={{
-                        borderWidth: 1,
-                        borderRadius: 10,
-                        marginLeft: 16,
-                        width: (SCREEN_WIDTH - 16 * 5) / 4,
-                        height: (SCREEN_WIDTH - 16 * 5) / 4,
+                        width: SCREEN_WIDTH / 4,
+                        alignItems: 'center',
                       }}>
-                      <Text
+                      <Image source={items.image} />
+                      <View
                         style={{
-                          position: 'absolute',
-                          bottom: 6,
-                          alignSelf: 'center',
-                          fontWeight: 'bold',
-                          fontSize: 12,
+                          width: (SCREEN_WIDTH - 16 * 5) / 4,
+                          height: 30,
+                          justifyContent: 'center',
                         }}>
-                        {items.name}
-                      </Text>
+                        <Text
+                          style={{
+                            alignSelf: 'center',
+                            fontWeight: 'bold',
+                            fontSize: 12,
+                          }}>
+                          {items.name}
+                        </Text>
+                      </View>
                     </View>
                   </TouchableOpacity>
                 </View>
@@ -112,7 +94,6 @@ const HomeScreen = () => {
             })}
           </View>
         </View>
-        <Divider />
       </Animated.ScrollView>
     </View>
   );
