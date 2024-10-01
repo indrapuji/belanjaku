@@ -4,23 +4,24 @@ import {
   View,
   Animated,
   useWindowDimensions,
-  TouchableOpacity,
   FlatList,
-  Image,
+  TouchableOpacity,
 } from 'react-native';
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import SearchField from '@components/SearchField';
 import {iphoneHasNotch} from '@utils/deviceinfo';
 import HeadCarousel from '@components/HeadCarousel';
-import categoriesData from '@data/categoriesData';
-import FastImage from 'react-native-fast-image';
+import Categories from '@components/Categories';
+import typeData from '@data/typeData';
+import productData from '@data/productData';
 
 const HomeScreen = () => {
+  const [typechoose, setTypechoose] = useState(1);
   const scroll = useRef(new Animated.Value(0)).current;
   const {width: SCREEN_WIDTH} = useWindowDimensions();
 
   return (
-    <View>
+    <View style={{flex: 1}}>
       <Animated.View
         style={[
           styles.searchContainer,
@@ -51,48 +52,64 @@ const HomeScreen = () => {
         scrollEventThrottle={16}
         showsVerticalScrollIndicator={false}>
         <HeadCarousel />
+
+        <Categories />
+
+        <FlatList
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={typeData}
+          keyExtractor={item => item.id.toString()}
+          style={{paddingHorizontal: 16}}
+          renderItem={({item}) => {
+            return (
+              <TouchableOpacity
+                key={item.id}
+                style={{
+                  paddingLeft: item.id === 1 ? 0 : 16,
+                  paddingRight: item.id === typeData.length ? 32 : 0,
+                }}
+                onPress={() => setTypechoose(item.id)}>
+                <Text
+                  style={{
+                    fontSize: 35,
+                    fontFamily: 'Tahoma',
+                    letterSpacing: -2,
+                    fontWeight: '900',
+                    color: item.id === typechoose ? 'black' : 'gray',
+                  }}>
+                  {item.name}
+                </Text>
+              </TouchableOpacity>
+            );
+          }}
+        />
         <View
           style={{
-            marginLeft: 16,
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
           }}>
-          <Text style={{fontWeight: 'bold', fontSize: 16}}>Categories</Text>
-        </View>
-        <View style={{marginVertical: 16}}>
-          <View
-            style={{
-              flexDirection: 'row',
-            }}>
-            {categoriesData.map(items => {
-              return (
-                <View key={items.id}>
-                  <TouchableOpacity style={{}}>
-                    <View
-                      style={{
-                        width: SCREEN_WIDTH / 4,
-                        alignItems: 'center',
-                      }}>
-                      <Image source={items.image} />
-                      <View
-                        style={{
-                          width: (SCREEN_WIDTH - 16 * 5) / 4,
-                          height: 30,
-                          justifyContent: 'center',
-                        }}>
-                        <Text
-                          style={{
-                            alignSelf: 'center',
-                            fontWeight: 'bold',
-                            fontSize: 12,
-                          }}>
-                          {items.name}
-                        </Text>
-                      </View>
-                    </View>
-                  </TouchableOpacity>
-                </View>
-              );
-            })}
-          </View>
+          {productData.map((item, i) => {
+            return (
+              <View
+                key={item.id}
+                style={{
+                  marginTop: 16,
+                  marginBottom: i + 1 === productData.length ? 16 : 0,
+                  marginLeft: i % 2 !== 0 ? 16 : 0,
+                  width: (SCREEN_WIDTH - 16 * 3) / 2,
+                  height: 180,
+                  backgroundColor: 'white',
+                  borderRadius: 16,
+                  shadowOpacity: 0.2,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <Text>{item.title}</Text>
+              </View>
+            );
+          })}
         </View>
       </Animated.ScrollView>
     </View>

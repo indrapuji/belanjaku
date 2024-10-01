@@ -11,13 +11,13 @@ const categoriesData = [
   },
   {
     id: 3,
-    name: "men's clothing",
-    image: require('@assets/icon/men.png'),
+    name: 'clothing',
+    image: require('@assets/icon/clothing.png'),
   },
   {
     id: 4,
-    name: "women's clothing",
-    image: require('@assets/icon/electronics.png'),
+    name: 'shoe',
+    image: require('@assets/icon/shoe.png'),
   },
 ];
 
