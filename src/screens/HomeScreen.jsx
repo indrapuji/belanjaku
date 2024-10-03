@@ -92,22 +92,25 @@ const HomeScreen = ({navigation}) => {
           }}>
           {productData.map((item, i) => {
             return (
-              <View
+              <TouchableOpacity
                 key={item.id}
-                style={{
-                  marginTop: 16,
-                  marginBottom: i + 1 === productData.length ? 16 : 0,
-                  marginLeft: i % 2 !== 0 ? 16 : 0,
-                  width: (SCREEN_WIDTH - 16 * 3) / 2,
-                  height: 180,
-                  backgroundColor: 'white',
-                  borderRadius: 16,
-                  shadowOpacity: 0.2,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
-                <Text>{item.title}</Text>
-              </View>
+                onPress={() => navigation.navigate('Detail')}>
+                <View
+                  style={{
+                    marginTop: 16,
+                    marginBottom: i + 1 === productData.length ? 16 : 0,
+                    marginLeft: i % 2 !== 0 ? 16 : 0,
+                    width: (SCREEN_WIDTH - 16 * 3) / 2,
+                    height: 180,
+                    backgroundColor: 'white',
+                    borderRadius: 16,
+                    shadowOpacity: 0.2,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <Text>{item.title}</Text>
+                </View>
+              </TouchableOpacity>
             );
           })}
         </View>

@@ -19,41 +19,39 @@ const Categories = () => {
         }}>
         {categoriesData.map(items => {
           return (
-            <View key={items.id}>
-              <TouchableOpacity style={{}}>
+            <TouchableOpacity key={items.id}>
+              <View
+                style={{
+                  width: (SCREEN_WIDTH - 16) / 4,
+                  alignItems: 'center',
+                }}>
+                <Image
+                  source={items.image}
+                  style={{
+                    width: (SCREEN_WIDTH - 16 * 5) / 4,
+                    height: (SCREEN_WIDTH - 16 * 5) / 4,
+                    borderWidth: 0.2,
+                    borderRadius: 16,
+                  }}
+                />
                 <View
                   style={{
-                    width: (SCREEN_WIDTH - 16) / 4,
-                    alignItems: 'center',
+                    width: (SCREEN_WIDTH - 20 * 5) / 4,
+                    height: 15,
+                    justifyContent: 'center',
+                    marginTop: 5,
                   }}>
-                  <Image
-                    source={items.image}
+                  <Text
                     style={{
-                      width: (SCREEN_WIDTH - 16 * 5) / 4,
-                      height: (SCREEN_WIDTH - 16 * 5) / 4,
-                      borderWidth: 0.2,
-                      borderRadius: 16,
-                    }}
-                  />
-                  <View
-                    style={{
-                      width: (SCREEN_WIDTH - 20 * 5) / 4,
-                      height: 15,
-                      justifyContent: 'center',
-                      marginTop: 5,
+                      alignSelf: 'center',
+                      fontWeight: 'bold',
+                      fontSize: 12,
                     }}>
-                    <Text
-                      style={{
-                        alignSelf: 'center',
-                        fontWeight: 'bold',
-                        fontSize: 12,
-                      }}>
-                      {items.name}
-                    </Text>
-                  </View>
+                    {items.name}
+                  </Text>
                 </View>
-              </TouchableOpacity>
-            </View>
+              </View>
+            </TouchableOpacity>
           );
         })}
       </View>
