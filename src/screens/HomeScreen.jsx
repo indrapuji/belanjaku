@@ -15,8 +15,8 @@ import Categories from '@components/Categories';
 import typeData from '@data/typeData';
 import productData from '@data/productData';
 
-const HomeScreen = () => {
-  const [typechoose, setTypechoose] = useState(1);
+const HomeScreen = ({navigation}) => {
+  const [index, setIndex] = useState(1);
   const scroll = useRef(new Animated.Value(0)).current;
   const {width: SCREEN_WIDTH} = useWindowDimensions();
 
@@ -37,7 +37,7 @@ const HomeScreen = () => {
       <View style={styles.searchPosition}>
         <View style={styles.SearchSize}>
           <SearchField
-            onPress={() => console.log('search')}
+            onPress={() => navigation.navigate('Search')}
             ontouch={() => console.log('Notif')}
           />
         </View>
@@ -61,22 +61,22 @@ const HomeScreen = () => {
           data={typeData}
           keyExtractor={item => item.id.toString()}
           style={{paddingHorizontal: 16}}
-          renderItem={({item}) => {
+          renderItem={({item, index: findex}) => {
             return (
               <TouchableOpacity
                 key={item.id}
                 style={{
-                  paddingLeft: item.id === 1 ? 0 : 16,
-                  paddingRight: item.id === typeData.length ? 32 : 0,
+                  paddingLeft: findex === 0 ? 0 : 16,
+                  paddingRight: findex === typeData.length - 1 ? 32 : 0,
                 }}
-                onPress={() => setTypechoose(item.id)}>
+                onPress={() => setIndex(findex)}>
                 <Text
                   style={{
-                    fontSize: 35,
+                    fontSize: findex === index ? 37 : 35,
                     fontFamily: 'Tahoma',
                     letterSpacing: -2,
                     fontWeight: '900',
-                    color: item.id === typechoose ? 'black' : 'gray',
+                    color: findex === index ? 'black' : 'gray',
                   }}>
                   {item.name}
                 </Text>
