@@ -4,7 +4,10 @@ import React from 'react';
 const LargeButton = ({actionButton, buttonText, disabled}) => {
   return (
     <TouchableOpacity
-      style={{...styles.bottonSize, backgroundColor: disabled ? 'grey' : 'red'}}
+      style={{
+        ...styles.bottonSize,
+        backgroundColor: disabled ? 'grey' : '#6439FF',
+      }}
       onPress={actionButton}>
       <Text style={styles.textButton}>{buttonText}</Text>
     </TouchableOpacity>
@@ -17,7 +20,7 @@ const styles = StyleSheet.create({
   bottonSize: {
     height: 50,
     borderRadius: 10,
-    marginBottom: 30,
+    marginBottom: 15,
     justifyContent: 'center',
     alignItems: 'center',
   },

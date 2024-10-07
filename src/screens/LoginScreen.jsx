@@ -25,72 +25,57 @@ const LoginScreen = () => {
   };
 
   const loginHanddle = async (username, password) => {
-    try {
-      const {data} = await axios({
-        method: 'POST',
-        url: `${host}/user/login`,
-        data: {
-          username,
-          password,
-        },
-      });
-      console.log(data);
-      if (!data.status) {
-        console.log('false');
-        setValue({...value, username: '', password: ''});
-        setShow(false);
-        navigation.navigate('ChangePass', {token: data.accessToken});
-      } else {
-        console.log(
-          data.accessToken,
-          data.role,
-          data.nama,
-          data.status,
-          data.event,
-        );
-        signIn(data.accessToken, data.role, data.nama, data.status, data.event);
-      }
-    } catch (error) {
-      setMessage(error.response.data.msg);
-      failLogin();
-      console.log(error);
-      console.log('ini');
-    }
+    console.log(username, password);
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <Image
-        source={require('@assets/image/bk.png')}
-        resizeMode="contain"
-        style={{width: SCREENWIDTH / 2}}
-      />
-      <TextInput
-        onChangeText={text => setValue({...value, username: text})}
-        value={value.username}
-        placeholder="Enter Your username"
-        autoCapitalize="none"
-        style={[styles.inputSize, {width: SCREENWIDTH - 50}]}
-      />
-      <View style={{position: 'relative', marginBottom: 30}}>
+      <View style={{flex: 1, marginBottom: 50}}>
+        <View style={{alignItems: 'center', flex: 1}}>
+          <Image
+            source={require('@assets/image/bk.png')}
+            resizeMode="contain"
+            style={{width: SCREENWIDTH / 2}}
+          />
+        </View>
         <TextInput
-          onChangeText={text => setValue({...value, password: text})}
-          value={value.password}
-          placeholder="Enter Your password"
+          onChangeText={text => setValue({...value, username: text})}
+          value={value.username}
+          placeholder="Enter Your username"
           autoCapitalize="none"
-          secureTextEntry={!show}
           style={[styles.inputSize, {width: SCREENWIDTH - 50}]}
         />
-        <TouchableOpacity
-          style={{position: 'absolute', top: 15, right: 15}}
-          onPress={changeShow}>
-          <Icon name={!show ? 'eye-off' : 'eye'} size={20} color={'#6439FF'} />
-        </TouchableOpacity>
+        <View style={{position: 'relative'}}>
+          <TextInput
+            onChangeText={text => setValue({...value, password: text})}
+            value={value.password}
+            placeholder="Enter Your password"
+            autoCapitalize="none"
+            secureTextEntry={!show}
+            style={[styles.inputSize, {width: SCREENWIDTH - 50}]}
+          />
+          <TouchableOpacity
+            style={{position: 'absolute', top: 15, right: 15}}
+            onPress={changeShow}>
+            <Icon
+              name={!show ? 'eye-off' : 'eye'}
+              size={20}
+              color={'#6439FF'}
+            />
+          </TouchableOpacity>
+        </View>
+        <LargeButton
+          actionButton={() => loginHanddle(value.username, value.password)}
+          buttonText={'Login'}
+          style={{marginBottom: 20}}
+        />
+        <View style={{justifyContent: 'center', flexDirection: 'row'}}>
+          <Text>Don't have an account?</Text>
+          <TouchableOpacity>
+            <Text style={{marginLeft: 5, color: '#6439FF'}}>Register</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      <LargeButton
-        actionButton={() => loginHanddle(value.username, value.password)}
-        buttonText={'Login'}
-      />
     </SafeAreaView>
   );
 };
@@ -111,7 +96,7 @@ const styles = StyleSheet.create({
   inputSize: {
     height: 50,
     borderRadius: 10,
-    marginBottom: 10,
+    marginBottom: 20,
     backgroundColor: 'white',
     paddingLeft: 20,
     paddingRight: 50,
