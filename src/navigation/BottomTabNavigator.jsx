@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import HomeScreen from '@screens/HomeScreen';
 import CartScreen from '@screens/CartScreen';
 import ProfileScreen from '@screens/ProfileScreen';
+import FavoriteScreen from '@screens/FavoriteScreen';
 
 const BottomTab = createBottomTabNavigator();
 
@@ -29,6 +30,17 @@ const BottomTabNavigator = () => {
           tabBarActiveTintColor: '#6439FF',
           tabBarIcon: ({focused}) => (
             <Icon name="cart" color={focused ? '#6439FF' : 'grey'} size={20} />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name="Favorite"
+        component={FavoriteScreen}
+        options={{
+          tabBarLabel: 'Favorite',
+          tabBarActiveTintColor: '#6439FF',
+          tabBarIcon: ({focused}) => (
+            <Icon name="heart" color={focused ? '#6439FF' : 'grey'} size={20} />
           ),
         }}
       />
