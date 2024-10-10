@@ -7,13 +7,15 @@ import {
   View,
   TouchableOpacity,
   SafeAreaView,
+  KeyboardAvoidingView,
 } from 'react-native';
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LargeButton from '@components/LargeButton';
+import InputBox from '@components/InputBox';
 
-const LoginScreen = () => {
-  const {width: SCREENWIDTH} = useWindowDimensions();
+const LoginScreen = ({navigation}) => {
+  const {width: SCREENWIDTH, height: SCREENHEIGHT} = useWindowDimensions();
   const [value, setValue] = useState({
     username: '',
     password: '',
@@ -30,52 +32,52 @@ const LoginScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={{flex: 1, marginBottom: 50}}>
-        <View style={{alignItems: 'center', flex: 1}}>
-          <Image
-            source={require('@assets/image/bk.png')}
-            resizeMode="contain"
-            style={{width: SCREENWIDTH / 2}}
-          />
-        </View>
-        <TextInput
-          onChangeText={text => setValue({...value, username: text})}
-          value={value.username}
-          placeholder="Enter Your username"
-          autoCapitalize="none"
-          style={[styles.inputSize, {width: SCREENWIDTH - 50}]}
+      <View style={{alignItems: 'center', flex: 1}}>
+        <Image
+          source={require('@assets/image/bk.png')}
+          resizeMode="contain"
+          style={{
+            width: SCREENWIDTH / 2,
+            height: SCREENWIDTH / 1.5,
+            marginTop: SCREENWIDTH / 2.5,
+          }}
         />
-        <View style={{position: 'relative'}}>
-          <TextInput
+      </View>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        <View style={{flex: 1, justifyContent: 'flex-end', marginBottom: 20}}>
+          <InputBox
+            onChangeText={text => setValue({...value, username: text})}
+            value={value.username}
+            placeholder="Enter Your username"
+            autoCapitalize="none"
+          />
+          <InputBox
             onChangeText={text => setValue({...value, password: text})}
             value={value.password}
             placeholder="Enter Your password"
             autoCapitalize="none"
             secureTextEntry={!show}
-            style={[styles.inputSize, {width: SCREENWIDTH - 50}]}
+            onPress={changeShow}
+            onShow={'eye'}
+            onHide={'eye-off'}
+            show={show}
+            icon
           />
-          <TouchableOpacity
-            style={{position: 'absolute', top: 15, right: 15}}
-            onPress={changeShow}>
-            <Icon
-              name={!show ? 'eye-off' : 'eye'}
-              size={20}
-              color={'#6439FF'}
-            />
-          </TouchableOpacity>
+
+          <LargeButton
+            actionButton={() => loginHanddle(value.username, value.password)}
+            buttonText={'Login'}
+            style={{marginBottom: 20}}
+          />
+          <View style={{justifyContent: 'center', flexDirection: 'row'}}>
+            <Text>Don't have an account?</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+              <Text style={{marginLeft: 5, color: '#6439FF'}}>Register</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        <LargeButton
-          actionButton={() => loginHanddle(value.username, value.password)}
-          buttonText={'Login'}
-          style={{marginBottom: 20}}
-        />
-        <View style={{justifyContent: 'center', flexDirection: 'row'}}>
-          <Text>Don't have an account?</Text>
-          <TouchableOpacity>
-            <Text style={{marginLeft: 5, color: '#6439FF'}}>Register</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };

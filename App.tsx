@@ -13,6 +13,7 @@ import CartScreen from '@screens/CartScreen';
 import DetailScreen from '@screens/DetailScreen';
 import BottomTabNavigator from '@navigation/BottomTabNavigator';
 import LoginScreen from '@screens/LoginScreen';
+import RegisterScreen from '@screens/RegisterScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,7 @@ const App = () => {
         <Stack.Navigator screenOptions={{headerShown: false}}>
           <Stack.Screen name="Onboarding" component={OnboardingScreen} />
           <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="Register" component={RegisterScreen} />
           <Stack.Screen name="Explore" component={BottomTabNavigator} />
           <Stack.Screen name="Search" component={SearchScreen} />
           <Stack.Screen name="Detail" component={DetailScreen} />
