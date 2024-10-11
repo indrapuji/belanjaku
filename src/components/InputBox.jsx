@@ -14,6 +14,7 @@ const InputBox = ({
   placeholder,
   autoCapitalize,
   secureTextEntry,
+  keyboardType,
   onPress,
   onShow,
   onHide,
@@ -29,6 +30,7 @@ const InputBox = ({
         placeholder={placeholder}
         autoCapitalize={autoCapitalize}
         secureTextEntry={secureTextEntry}
+        keyboardType={keyboardType}
         style={[styles.inputSize, {width: SCREENWIDTH - 50}]}
       />
       {icon && (

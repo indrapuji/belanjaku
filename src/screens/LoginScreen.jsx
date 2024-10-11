@@ -49,13 +49,13 @@ const LoginScreen = ({navigation}) => {
           <InputBox
             onChangeText={text => setValue({...value, username: text})}
             value={value.username}
-            placeholder="Enter Your username"
+            placeholder="Enter Your Username"
             autoCapitalize="none"
           />
           <InputBox
             onChangeText={text => setValue({...value, password: text})}
             value={value.password}
-            placeholder="Enter Your password"
+            placeholder="Enter Your Password"
             autoCapitalize="none"
             secureTextEntry={!show}
             onPress={changeShow}
