@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Image,
   useWindowDimensions,
+  ScrollView,
 } from 'react-native';
 import React, {useState} from 'react';
 import InputBox from '@components/InputBox';
@@ -40,27 +41,36 @@ const RegisterScreen = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={{alignItems: 'center'}}>
-        <Image
-          source={require('@assets/image/bk.png')}
-          resizeMode="contain"
-          style={{
-            width: SCREENWIDTH / 2,
-            height: SCREENWIDTH / 1.5,
-            marginVertical: 20,
-          }}
-        />
-      </View>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={{flex: 1, justifyContent: 'flex-end', marginBottom: 20}}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={{
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={{alignItems: 'center'}}>
+          <Image
+            source={require('@assets/image/bk.png')}
+            resizeMode="contain"
+            style={{
+              width: SCREENWIDTH / 2,
+              height: SCREENWIDTH / 1.5,
+              marginVertical: 30,
+            }}
+          />
+        </View>
         <InputBox
+          title={'Fullname'}
           placeholder={'Enter Your Name'}
           autoCapitalize={'words'}
           onChangeText={text => setValue({...value, name: text})}
           value={value.name}
         />
+        <View style={{marginBottom: 5, marginLeft: 5}}>
+          <Text>Gender</Text>
+        </View>
         <SelectDropdown
           data={gender}
           onSelect={selectedItem => {
@@ -94,7 +104,9 @@ const RegisterScreen = ({navigation}) => {
           showsVerticalScrollIndicator={false}
           dropdownStyle={styles.dropdownMenuStyle}
         />
-        <SelectDropdown />
+        <View style={{marginBottom: 5, marginLeft: 5}}>
+          <Text>Date Of Birth</Text>
+        </View>
         <TouchableOpacity onPress={() => setOpen(true)}>
           <View style={styles.inputSize}>
             <Text style={{color: '#6439FF'}}>
@@ -116,34 +128,38 @@ const RegisterScreen = ({navigation}) => {
           </View>
         </TouchableOpacity>
         <InputBox
+          title={'Phone'}
           placeholder={'Enter Your Phone'}
           onChangeText={text => setValue({...value, phone: text})}
           value={value.phone}
           keyboardType={'phone-pad'}
         />
         <InputBox
+          title={'Password'}
           placeholder={'Enter Your Password'}
           onChangeText={text => setValue({...value, password: text})}
           value={value.password}
         />
         <InputBox
+          title={'Repeat Password'}
           placeholder={'Enter Your Password Again'}
           onChangeText={text => setValidate(text)}
           value={validate}
         />
+
         <LargeButton
           actionButton={() => regHanddle(value.password, validate)}
           buttonText={'Register'}
           style={{marginBottom: 20}}
         />
         <View style={{justifyContent: 'center', flexDirection: 'row'}}>
-          <Text>Don't have an account?</Text>
+          <Text>have an account?</Text>
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Text style={{marginLeft: 5, color: '#6439FF'}}>Register</Text>
+            <Text style={{marginLeft: 5, color: '#6439FF'}}>Login</Text>
           </TouchableOpacity>
         </View>
-      </KeyboardAvoidingView>
-    </SafeAreaView>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 

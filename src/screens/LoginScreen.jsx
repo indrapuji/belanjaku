@@ -47,12 +47,14 @@ const LoginScreen = ({navigation}) => {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <View style={{flex: 1, justifyContent: 'flex-end', marginBottom: 20}}>
           <InputBox
+            title={'Username'}
             onChangeText={text => setValue({...value, username: text})}
             value={value.username}
             placeholder="Enter Your Username"
             autoCapitalize="none"
           />
           <InputBox
+            title={'Password'}
             onChangeText={text => setValue({...value, password: text})}
             value={value.password}
             placeholder="Enter Your Password"
