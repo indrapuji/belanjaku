@@ -6,6 +6,7 @@ import {
   useWindowDimensions,
   FlatList,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 import React, {useRef, useState} from 'react';
 import SearchField from '@components/SearchField';
@@ -14,6 +15,8 @@ import HeadCarousel from '@components/HeadCarousel';
 import Categories from '@components/Categories';
 import typeData from '@data/typeData';
 import productData from '@data/productData';
+import formatRupiah from '@utils/formatRupiah';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const HomeScreen = ({navigation}) => {
   const [index, setIndex] = useState(1);
@@ -100,15 +103,28 @@ const HomeScreen = ({navigation}) => {
                     marginTop: 16,
                     marginBottom: i + 1 === productData.length ? 16 : 0,
                     marginLeft: i % 2 !== 0 ? 16 : 0,
-                    width: (SCREEN_WIDTH - 16 * 3) / 2,
-                    height: 180,
-                    backgroundColor: 'white',
                     borderRadius: 16,
                     shadowOpacity: 0.2,
-                    justifyContent: 'center',
-                    alignItems: 'center',
+                    position: 'relative',
                   }}>
-                  <Text>{item.title}</Text>
+                  <Image
+                    source={item.image[0]}
+                    style={{
+                      width: (SCREEN_WIDTH - 16 * 3) / 2,
+                      height: 180,
+                      borderRadius: 16,
+                      opacity: 0.6,
+                    }}
+                    resizeMode="cover"
+                  />
+                  <View style={{position: 'absolute', bottom: 10, left: 10}}>
+                    <Text style={{fontWeight: '700', fontSize: 15}}>
+                      {item.title}
+                    </Text>
+                    <Text style={{fontSize: 10, fontWeight: 'bold'}}>
+                      {formatRupiah(item.price)}
+                    </Text>
+                  </View>
                 </View>
               </TouchableOpacity>
             );

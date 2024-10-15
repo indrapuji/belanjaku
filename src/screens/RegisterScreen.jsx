@@ -49,7 +49,9 @@ const RegisterScreen = ({navigation}) => {
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={{flex: 1, marginVertical: 50}}>
         <View style={{alignItems: 'center'}}>
           <Image
             source={require('@assets/image/bk.png')}

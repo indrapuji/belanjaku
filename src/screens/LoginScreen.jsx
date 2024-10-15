@@ -28,6 +28,7 @@ const LoginScreen = ({navigation}) => {
 
   const loginHanddle = async (username, password) => {
     console.log(username, password);
+    navigation.navigate('Explore');
   };
 
   return (
