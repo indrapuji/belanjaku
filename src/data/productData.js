@@ -2,6 +2,7 @@ const productData = [
   {
     id: 1,
     title: 'Ultraboost 5x',
+    status: 'discount',
     price: '3000000',
     category: 'Shoe',
     description:

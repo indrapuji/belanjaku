@@ -2,7 +2,6 @@ import {
   Image,
   StyleSheet,
   Text,
-  TextInput,
   useWindowDimensions,
   View,
   TouchableOpacity,
@@ -10,7 +9,6 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 import React, {useState} from 'react';
-import Icon from 'react-native-vector-icons/Ionicons';
 import LargeButton from '@components/LargeButton';
 import InputBox from '@components/InputBox';
 
