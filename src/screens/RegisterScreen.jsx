@@ -1,10 +1,8 @@
 import {
-  SafeAreaView,
   StyleSheet,
   Text,
   View,
   KeyboardAvoidingView,
-  Button,
   TouchableOpacity,
   Image,
   useWindowDimensions,
@@ -43,15 +41,8 @@ const RegisterScreen = ({navigation}) => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      style={{
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        style={{flex: 1, marginVertical: 50}}>
+      style={styles.container}>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{alignItems: 'center'}}>
           <Image
             source={require('@assets/image/bk.png')}
@@ -154,10 +145,10 @@ const RegisterScreen = ({navigation}) => {
           buttonText={'Register'}
           style={{marginBottom: 20}}
         />
-        <View style={{justifyContent: 'center', flexDirection: 'row'}}>
+        <View style={styles.loginContainer}>
           <Text>have an account?</Text>
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Text style={{marginLeft: 5, color: '#6439FF'}}>Login</Text>
+            <Text style={styles.loginArea}>Login</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -206,10 +197,6 @@ const styles = StyleSheet.create({
   dropdownButtonArrowStyle: {
     fontSize: 28,
   },
-  dropdownButtonIconStyle: {
-    fontSize: 28,
-    marginRight: 8,
-  },
   dropdownMenuStyle: {
     backgroundColor: '#E9ECEF',
     borderRadius: 8,
@@ -227,5 +214,14 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '500',
     color: '#151E26',
+  },
+  loginContainer: {
+    justifyContent: 'center',
+    flexDirection: 'row',
+    marginBottom: 50,
+  },
+  loginArea: {
+    marginLeft: 5,
+    color: '#6439FF',
   },
 });

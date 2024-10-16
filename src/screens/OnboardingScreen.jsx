@@ -1,4 +1,10 @@
-import {StyleSheet, Text, View, useWindowDimensions} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  useWindowDimensions,
+  SafeAreaView,
+} from 'react-native';
 import React from 'react';
 import Animated, {
   useSharedValue,
@@ -11,7 +17,6 @@ import Animated, {
 import onboardingData from '@data/onboardingData';
 import Pagination from '@components/Pagination';
 import CustomButton from '@components/CustomButton';
-import {SafeAreaView} from 'react-native-safe-area-context';
 
 const OnboardingScreen = () => {
   const {width: SCREEN_WIDTH} = useWindowDimensions();

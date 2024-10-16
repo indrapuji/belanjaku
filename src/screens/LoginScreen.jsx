@@ -44,7 +44,7 @@ const LoginScreen = ({navigation}) => {
       </View>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-        <View style={{flex: 1, justifyContent: 'flex-end', marginBottom: 20}}>
+        <View style={styles.inputContainer}>
           <InputBox
             title={'Username'}
             onChangeText={text => setValue({...value, username: text})}
@@ -69,12 +69,11 @@ const LoginScreen = ({navigation}) => {
           <LargeButton
             actionButton={() => loginHanddle(value.username, value.password)}
             buttonText={'Login'}
-            style={{marginBottom: 20}}
           />
-          <View style={{justifyContent: 'center', flexDirection: 'row'}}>
+          <View style={styles.registerContainer}>
             <Text>Don't have an account?</Text>
             <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-              <Text style={{marginLeft: 5, color: '#6439FF'}}>Register</Text>
+              <Text style={styles.registerArea}>Register</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -92,19 +91,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  inputContainer: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    marginBottom: 20,
+  },
   PoppinsBold: {
     fontFamily: 'Poppins-Medium',
-    fontSize: 20,
   },
-  inputSize: {
-    height: 50,
-    borderRadius: 10,
-    marginBottom: 20,
-    backgroundColor: 'white',
-    paddingLeft: 20,
-    paddingRight: 50,
+  registerContainer: {
+    justifyContent: 'center',
+    flexDirection: 'row',
+  },
+  registerArea: {
+    marginLeft: 5,
     color: '#6439FF',
-    borderWidth: 1,
-    borderColor: 'gray',
   },
 });

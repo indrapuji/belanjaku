@@ -6,25 +6,12 @@ import {useNavigation} from '@react-navigation/native';
 const BackButton = ({}) => {
   const navigation = useNavigation();
   return (
-    <View style={{marginVertical: 50}}>
+    <View style={styles.marginPosition}>
       <TouchableOpacity
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          position: 'absolute',
-          left: 16,
-        }}
+        style={styles.arrowPosition}
         onPress={() => navigation.goBack()}>
         <Icon name="arrow-back" color="gray" size={30} />
-        <Text
-          style={{
-            fontWeight: 'bold',
-            fontSize: 25,
-            marginLeft: 5,
-            color: 'gray',
-          }}>
-          Back
-        </Text>
+        <Text style={styles.textFormat}>Back</Text>
       </TouchableOpacity>
     </View>
   );
@@ -32,4 +19,20 @@ const BackButton = ({}) => {
 
 export default BackButton;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  marginPosition: {
+    marginVertical: 50,
+  },
+  arrowPosition: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    position: 'absolute',
+    left: 16,
+  },
+  textFormat: {
+    fontWeight: 'bold',
+    fontSize: 25,
+    marginLeft: 5,
+    color: 'gray',
+  },
+});
