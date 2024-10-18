@@ -14,9 +14,13 @@ import Animated, {
   interpolate,
   Extrapolation,
 } from 'react-native-reanimated';
-import onboardingData from '@data/onboardingData';
+
+// Component List
 import Pagination from '@components/Pagination';
 import CustomButton from '@components/CustomButton';
+
+// Data List
+import onboardingData from '@data/onboardingData';
 
 const OnboardingScreen = () => {
   const {width: SCREEN_WIDTH} = useWindowDimensions();

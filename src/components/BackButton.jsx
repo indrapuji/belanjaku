@@ -10,7 +10,17 @@ const BackButton = ({}) => {
       <TouchableOpacity
         style={styles.arrowPosition}
         onPress={() => navigation.goBack()}>
-        <Icon name="arrow-back" color="gray" size={30} />
+        <View
+          style={{
+            width: 40,
+            height: 40,
+            borderRadius: 50,
+            backgroundColor: 'white',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Icon name="chevron-back" color="black" size={20} />
+        </View>
         <Text style={styles.textFormat}>Back</Text>
       </TouchableOpacity>
     </View>
@@ -25,13 +35,13 @@ const styles = StyleSheet.create({
   },
   arrowPosition: {
     flexDirection: 'row',
-    alignItems: 'center',
     position: 'absolute',
     left: 16,
+    alignItems: 'center',
   },
   textFormat: {
     fontWeight: 'bold',
-    fontSize: 25,
+    fontSize: 20,
     marginLeft: 5,
     color: 'gray',
   },

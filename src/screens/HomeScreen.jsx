@@ -7,16 +7,23 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React, {useRef, useState} from 'react';
+
+// Component List
 import SearchField from '@components/SearchField';
-import {iphoneHasNotch} from '@utils/deviceinfo';
 import HeadCarousel from '@components/HeadCarousel';
 import Categories from '@components/Categories';
+import HomeProductCard from '@components/HomeProductCard';
+
+// Util List
+import {iphoneHasNotch} from '@utils/deviceinfo';
+
+// Data List
 import typeData from '@data/typeData';
 import productData from '@data/productData';
-import HomeProductCard from '@components/HomeProductCard';
 
 const HomeScreen = ({navigation}) => {
   const [index, setIndex] = useState(1);
+  const [loading, setLoading] = useState(true);
   const scroll = useRef(new Animated.Value(0)).current;
 
   return (
@@ -83,6 +90,7 @@ const HomeScreen = ({navigation}) => {
             );
           }}
         />
+
         <HomeProductCard dataProduct={productData} />
       </Animated.ScrollView>
     </View>

@@ -9,12 +9,14 @@ import {
   ScrollView,
 } from 'react-native';
 import React, {useState} from 'react';
-import InputBox from '@components/InputBox';
 import DatePicker from 'react-native-date-picker';
 import moment from 'moment';
-import LargeButton from '@components/LargeButton';
 import SelectDropdown from 'react-native-select-dropdown';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
+// Component List
+import InputBox from '@components/InputBox';
+import LargeButton from '@components/LargeButton';
 
 const RegisterScreen = ({navigation}) => {
   const {width: SCREENWIDTH, height: SCREENHEIGHT} = useWindowDimensions();

@@ -1,17 +1,15 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
-
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import OnboardingScreen from '@screens/OnboardingScreen';
-import HomeScreen from '@screens/HomeScreen';
-import SearchScreen from '@screens/SearchScreen';
-import CartScreen from '@screens/CartScreen';
-import DetailScreen from '@screens/DetailScreen';
 import BottomTabNavigator from '@navigation/BottomTabNavigator';
+
+// Screen List
+import OnboardingScreen from '@screens/OnboardingScreen';
+import SearchScreen from '@screens/SearchScreen';
+import DetailScreen from '@screens/DetailScreen';
 import LoginScreen from '@screens/LoginScreen';
 import RegisterScreen from '@screens/RegisterScreen';
 

@@ -1,11 +1,11 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import BackButton from '@components/BackButton';
+import CustomHeader from '@components/CustomHeader';
 
 const DetailScreen = () => {
   return (
     <View>
-      <BackButton />
+      <CustomHeader />
       <Text>DetailScreen</Text>
     </View>
   );
