@@ -21,7 +21,6 @@ const BackButton = ({}) => {
           }}>
           <Icon name="chevron-back" color="black" size={20} />
         </View>
-        <Text style={styles.textFormat}>Back</Text>
       </TouchableOpacity>
     </View>
   );
@@ -32,6 +31,7 @@ export default BackButton;
 const styles = StyleSheet.create({
   marginPosition: {
     marginVertical: 50,
+    position: 'relative',
   },
   arrowPosition: {
     flexDirection: 'row',
