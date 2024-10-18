@@ -25,7 +25,11 @@ const HomeProductCard = ({dataProduct}) => {
           return (
             <TouchableOpacity
               key={item.id}
-              onPress={() => navigation.navigate('Detail')}>
+              onPress={() =>
+                navigation.navigate('Detail', {
+                  data: item,
+                })
+              }>
               <View
                 style={{
                   marginTop: 16,

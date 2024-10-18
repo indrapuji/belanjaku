@@ -11,8 +11,9 @@ import React from 'react';
 import productData from '@data/productData';
 import formatRupiah from '@utils/formatRupiah';
 
-const CartScreen = () => {
+const CartScreen = ({navigation}) => {
   const {width: SCREEN_WIDTH} = useWindowDimensions();
+
   return (
     <View style={styles.container}>
       <ScrollView style={{}}>
@@ -22,6 +23,8 @@ const CartScreen = () => {
         {productData.map(item => {
           return (
             <TouchableOpacity
+              onPress={() => navigation.navigate('Detail')}
+              key={item.id}
               style={{
                 backgroundColor: 'white',
                 borderRadius: 16,

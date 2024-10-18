@@ -27,7 +27,7 @@ const HomeScreen = ({navigation}) => {
   const scroll = useRef(new Animated.Value(0)).current;
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
       <Animated.View
         style={[
           styles.searchContainer,

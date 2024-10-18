@@ -1,12 +1,15 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import CustomHeader from '@components/CustomHeader';
+import DetailCarousel from '@components/DetailCarousel';
 
-const DetailScreen = () => {
+const DetailScreen = ({route}) => {
+  const {data} = route.params;
+  console.log(data);
   return (
     <View>
+      <DetailCarousel data={data.image} />
       <CustomHeader />
-      <Text>DetailScreen</Text>
     </View>
   );
 };
