@@ -32,11 +32,11 @@ const DetailCarousel = ({data}) => {
         activeDot={<View style={styles.dotsActive} />}
         dot={<View style={styles.dotsInactive} />}
         paginationStyle={{
-          bottom: 35,
+          bottom: 25,
         }}>
-        {data.map(item => {
+        {data.map((item, index) => {
           return (
-            <TouchableOpacity key={item.id}>
+            <TouchableOpacity key={index}>
               <View
                 style={{
                   height: SCREEN_WIDTH * (3 / 4),
