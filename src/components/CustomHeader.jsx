@@ -8,6 +8,7 @@ import {
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
+import {iphoneHasNotch} from '@utils/deviceinfo';
 
 const CustomHeader = () => {
   const {width: SCREEN_WIDTH} = useWindowDimensions();
@@ -66,7 +67,7 @@ export default CustomHeader;
 const styles = StyleSheet.create({
   marginPosition: {
     position: 'absolute',
-    top: 50,
+    top: iphoneHasNotch ? 50 : 25,
     left: 15,
     right: 15,
     flexDirection: 'row',

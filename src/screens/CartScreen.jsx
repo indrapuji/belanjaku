@@ -7,18 +7,46 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import productData from '@data/productData';
 import formatRupiah from '@utils/formatRupiah';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import colors from 'src/themes/colors';
 
 const CartScreen = ({navigation}) => {
   const {width: SCREEN_WIDTH} = useWindowDimensions();
+
+  const [isSelected, setSelection] = useState(false);
 
   return (
     <View style={styles.container}>
       <ScrollView style={{}}>
         <View style={{alignItems: 'center', height: 50}}>
           <Text style={[styles.PoppinsBold, {fontSize: 20}]}>My Cart</Text>
+        </View>
+        <View
+          style={{
+            backgroundColor: 'white',
+            borderRadius: 16,
+            height: 50,
+            width: SCREEN_WIDTH - 36,
+            marginBottom: 16,
+            alignItems: 'center',
+            flexDirection: 'row',
+            justifyContent: 'flex-end',
+            paddingHorizontal: 16,
+          }}>
+          <Text>Select all</Text>
+          <View style={{marginLeft: 10}}>
+            <BouncyCheckbox
+              size={25}
+              fillColor={colors.PRIMARY}
+              unFillColor="#FFFFFF"
+              innerIconStyle={{borderWidth: 2}}
+              onPress={isChecked => setSelection(isChecked)}
+              isChecked={isSelected}
+            />
+          </View>
         </View>
         {productData.map(item => {
           return (

@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 16,
-    paddingTop: iphoneHasNotch ? 32 : 18,
+    paddingTop: iphoneHasNotch ? 32 : 10,
     backgroundColor: 'transparent',
     top: 20,
     left: 0,

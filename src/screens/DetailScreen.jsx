@@ -11,7 +11,7 @@ import CustomHeader from '@components/CustomHeader';
 import DetailCarousel from '@components/DetailCarousel';
 import formatRupiah from '@utils/formatRupiah';
 import colors from 'src/themes/colors';
-import LargeButton from '@components/LargeButton';
+
 
 const DetailScreen = ({route}) => {
   const {width: SCREEN_WIDTH} = useWindowDimensions();
