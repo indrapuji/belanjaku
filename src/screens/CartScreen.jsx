@@ -63,9 +63,8 @@ const CartScreen = ({navigation}) => {
 
         {productData.map((item, index) => {
           return (
-            <View>
+            <View key={index}>
               <View
-                key={index}
                 style={{
                   backgroundColor: 'white',
                   borderRadius: 16,

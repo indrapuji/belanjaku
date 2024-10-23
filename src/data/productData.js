@@ -56,34 +56,6 @@ const productData = [
       require('@assets/image/tshirt_4.jpg'),
     ],
   },
-  {
-    id: 5,
-    title: 'Gucci Ace',
-    price: '12000000',
-    category: 'Shoe',
-    description:
-      'The Ace low-top trainer in leather is embellished with the gold embroidered bee against the Web stripe. The bee is an archival code first introduced in Gucci ready-to-wear in the 1970s.',
-    image: [
-      require('@assets/image/gucci_1.jpg'),
-      require('@assets/image/gucci_2.jpg'),
-      require('@assets/image/gucci_3.jpg'),
-      require('@assets/image/gucci_4.jpg'),
-    ],
-  },
-  {
-    id: 6,
-    title: 'Stands Short Sleeve',
-    price: '299000',
-    category: 'Clothing',
-    description:
-      "This limited-edition collection, available only at UNIQLO, was made possible through a joint project with Disney. Mickey Mouse as envisioned by Disney's designers is expressed on each and every T-shirt. The poses may be standard, but Mickey Mouse that each of us envisions is so different. Let's Find your Mickey.",
-    image: [
-      require('@assets/image/tshirt_1.jpg'),
-      require('@assets/image/tshirt_2.jpg'),
-      require('@assets/image/tshirt_3.jpg'),
-      require('@assets/image/tshirt_4.jpg'),
-    ],
-  },
  
 ];
 
