@@ -36,7 +36,7 @@ const HomeProductCard = ({dataProduct}) => {
                   marginBottom: i + 1 === dataProduct.length ? 16 : 0,
                   marginLeft: i % 2 !== 0 ? 16 : 0,
                   borderRadius: 16,
-                  shadowOpacity: 0.2,
+                  // shadowOpacity: 0.2,
                   position: 'relative',
                 }}>
                 <Image
@@ -61,10 +61,10 @@ const HomeProductCard = ({dataProduct}) => {
                     style={{
                       fontWeight: '700',
                       fontSize: 15,
-                      shadowColor: 'white',
-                      shadowOffset: {width: 2, height: 2},
-                      shadowOpacity: 1,
-                      shadowRadius: 1,
+                      // shadowColor: 'white',
+                      // shadowOffset: {width: 2, height: 2},
+                      // shadowOpacity: 1,
+                      // shadowRadius: 1,
                     }}
                     numberOfLines={1}
                     ellipsizeMode="tail">

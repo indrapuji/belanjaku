@@ -10,115 +10,184 @@ import {
 import React, {useState} from 'react';
 import productData from '@data/productData';
 import formatRupiah from '@utils/formatRupiah';
-import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import colors from 'src/themes/colors';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
 const CartScreen = ({navigation}) => {
   const {width: SCREEN_WIDTH} = useWindowDimensions();
 
-  const [isSelected, setSelection] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   return (
     <View style={styles.container}>
-      <ScrollView style={{}}>
-        <View style={{alignItems: 'center', height: 50}}>
-          <Text style={[styles.PoppinsBold, {fontSize: 20}]}>My Cart</Text>
-        </View>
+      <View
+        style={{
+          alignItems: 'center',
+          backgroundColor: 'white',
+          paddingTop: 50,
+          paddingBottom: 20,
+          width: SCREEN_WIDTH,
+          borderBottomLeftRadius: 20,
+          borderBottomRightRadius: 20,
+        }}>
+        <Text style={[styles.PoppinsBold, {fontSize: 20}]}>My Cart</Text>
+      </View>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+          backgroundColor: 'white',
+          width: SCREEN_WIDTH,
+          marginTop: 10,
+          paddingBottom: 20,
+          borderTopLeftRadius: 20,
+          borderTopRightRadius: 20,
+        }}>
         <View
           style={{
-            backgroundColor: 'white',
-            borderRadius: 16,
-            height: 50,
-            width: SCREEN_WIDTH - 36,
-            marginBottom: 16,
-            alignItems: 'center',
+            marginTop: 20,
+            marginLeft: 16,
             flexDirection: 'row',
-            justifyContent: 'flex-end',
-            paddingHorizontal: 16,
           }}>
-          <Text>Select all</Text>
-          <View style={{marginLeft: 10}}>
-            <BouncyCheckbox
-              size={25}
-              fillColor={colors.PRIMARY}
-              unFillColor="#FFFFFF"
-              innerIconStyle={{borderWidth: 2}}
-              onPress={isChecked => setSelection(isChecked)}
-              isChecked={isSelected}
-            />
-          </View>
+          <BouncyCheckbox
+            size={25}
+            isChecked={checked}
+            fillColor={colors.SECONDARY}
+            unFillColor="#FFFFFF"
+            innerIconStyle={{borderWidth: 2}}
+            onPress={isChecked => {
+              setChecked(isChecked);
+            }}
+          />
+          <Text style={styles.PoppinsMedium}>Select all</Text>
         </View>
-        {productData.map(item => {
+
+        {productData.map((item, index) => {
           return (
-            <TouchableOpacity
-              onPress={() => navigation.navigate('Detail')}
-              key={item.id}
-              style={{
-                backgroundColor: 'white',
-                borderRadius: 16,
-                height: 120,
-                width: SCREEN_WIDTH - 36,
-                marginBottom: 16,
-                alignItems: 'center',
-                flexDirection: 'row',
-              }}>
-              <Image
-                source={item.image[0]}
-                style={{
-                  height: 90,
-                  width: 90,
-                  borderRadius: 10,
-                  marginLeft: 16,
-                }}
-              />
+            <View>
               <View
+                key={index}
                 style={{
-                  marginLeft: 16,
-                  paddingRight: 120,
-                  height: 90,
-                  justifyContent: 'space-between',
+                  backgroundColor: 'white',
+                  borderRadius: 16,
+                  height: 120,
+                  width: SCREEN_WIDTH - 36,
+
+                  alignItems: 'center',
+                  flexDirection: 'row',
                 }}>
-                <View style={{}}>
-                  <Text
-                    style={[styles.PoppinsMedium, {}]}
-                    numberOfLines={1}
-                    ellipsizeMode="tail">
-                    {item.title}
-                  </Text>
-                  <Text>{item.category}</Text>
+                <View style={{marginLeft: 16, marginRight: -16}}>
+                  <BouncyCheckbox
+                    size={25}
+                    fillColor={colors.SECONDARY}
+                    isChecked={checked}
+                    unFillColor="#FFFFFF"
+                    innerIconStyle={{borderWidth: 2}}
+                  />
                 </View>
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate('Detail', {
+                      data: item,
+                    })
+                  }>
+                  <Image
+                    source={item.image[0]}
+                    style={{
+                      height: 90,
+                      width: 90,
+                      borderRadius: 10,
+                      marginLeft: 16,
+                    }}
+                  />
+                </TouchableOpacity>
                 <View
                   style={{
-                    flexDirection: 'row',
+                    marginLeft: 16,
+                    paddingRight: 120,
+                    height: 90,
                     justifyContent: 'space-between',
-                    width: SCREEN_WIDTH - 180,
                   }}>
-                  <Text>{formatRupiah(item.price)}</Text>
+                  <TouchableOpacity
+                    style={{}}
+                    onPress={() =>
+                      navigation.navigate('Detail', {
+                        data: item,
+                      })
+                    }>
+                    <Text
+                      style={[
+                        styles.PoppinsMedium,
+                        {width: SCREEN_WIDTH - 180},
+                      ]}
+                      numberOfLines={1}
+                      ellipsizeMode="tail">
+                      {item.title}
+                    </Text>
+
+                    <Text>{item.category}</Text>
+                  </TouchableOpacity>
                   <View
                     style={{
                       flexDirection: 'row',
-                      backgroundColor: '#def',
-                      width: 75,
-                      height: 25,
                       justifyContent: 'space-between',
+                      width: SCREEN_WIDTH - 180,
                       alignItems: 'center',
-                      borderRadius: 10,
                     }}>
-                    <TouchableOpacity style={{width: 25, alignItems: 'center'}}>
-                      <Text>-</Text>
-                    </TouchableOpacity>
-                    <View style={{width: 25, alignItems: 'center'}}>
-                      <Text>{1}</Text>
+                    <Text>{formatRupiah(item.price)}</Text>
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        backgroundColor: '#def',
+                        width: 75,
+                        height: 25,
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        borderRadius: 10,
+                      }}>
+                      <TouchableOpacity
+                        style={{width: 25, alignItems: 'center'}}>
+                        <Text>-</Text>
+                      </TouchableOpacity>
+                      <View style={{width: 25, alignItems: 'center'}}>
+                        <Text>{1}</Text>
+                      </View>
+                      <TouchableOpacity
+                        style={{width: 25, alignItems: 'center'}}>
+                        <Text>+</Text>
+                      </TouchableOpacity>
                     </View>
-                    <TouchableOpacity style={{width: 25, alignItems: 'center'}}>
-                      <Text>+</Text>
-                    </TouchableOpacity>
                   </View>
                 </View>
               </View>
-            </TouchableOpacity>
+              {productData.length - 1 !== index && (
+                <View
+                  style={{
+                    backgroundColor: 'gray',
+                    height: 1,
+                    marginLeft: 162,
+                    marginRight: 16,
+                    marginVertical: 8,
+                  }}
+                />
+              )}
+            </View>
           );
         })}
+        <View style={{alignItems: 'center', marginTop: 20}}>
+          <TouchableOpacity
+            style={{
+              marginBottom: 10,
+              backgroundColor: colors.SECONDARY,
+              height: 45,
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+              borderRadius: 16,
+              width: SCREEN_WIDTH - 32,
+            }}>
+            <Text style={styles.PoppinsBold}>Checkout</Text>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
     </View>
   );
@@ -129,11 +198,11 @@ export default CartScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 50,
     alignItems: 'center',
   },
   PoppinsBold: {
     fontFamily: 'Poppins-Bold',
+    color: 'black',
   },
   PoppinsMedium: {
     fontFamily: 'Poppins-Medium',
