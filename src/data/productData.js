@@ -16,7 +16,7 @@ const productData = [
   },
   {
     id: 2,
-    title: 'Balenciaga x Under Armour',
+    title: 'Balenciaga x Under Armour x Balenciaga x Under Armour',
     price: '10000000',
     category: 'Shoe',
     description:
@@ -44,6 +44,48 @@ const productData = [
   },
   {
     id: 4,
+    title: 'Stands Short Sleeve',
+    price: '299000',
+    category: 'Clothing',
+    description:
+      "This limited-edition collection, available only at UNIQLO, was made possible through a joint project with Disney. Mickey Mouse as envisioned by Disney's designers is expressed on each and every T-shirt. The poses may be standard, but Mickey Mouse that each of us envisions is so different. Let's Find your Mickey.",
+    image: [
+      require('@assets/image/tshirt_1.jpg'),
+      require('@assets/image/tshirt_2.jpg'),
+      require('@assets/image/tshirt_3.jpg'),
+      require('@assets/image/tshirt_4.jpg'),
+    ],
+  },
+  {
+    id: 5,
+    title: 'Stands Short Sleeve',
+    price: '299000',
+    category: 'Clothing',
+    description:
+      "This limited-edition collection, available only at UNIQLO, was made possible through a joint project with Disney. Mickey Mouse as envisioned by Disney's designers is expressed on each and every T-shirt. The poses may be standard, but Mickey Mouse that each of us envisions is so different. Let's Find your Mickey.",
+    image: [
+      require('@assets/image/tshirt_1.jpg'),
+      require('@assets/image/tshirt_2.jpg'),
+      require('@assets/image/tshirt_3.jpg'),
+      require('@assets/image/tshirt_4.jpg'),
+    ],
+  },
+  {
+    id: 6,
+    title: 'Stands Short Sleeve',
+    price: '299000',
+    category: 'Clothing',
+    description:
+      "This limited-edition collection, available only at UNIQLO, was made possible through a joint project with Disney. Mickey Mouse as envisioned by Disney's designers is expressed on each and every T-shirt. The poses may be standard, but Mickey Mouse that each of us envisions is so different. Let's Find your Mickey.",
+    image: [
+      require('@assets/image/tshirt_1.jpg'),
+      require('@assets/image/tshirt_2.jpg'),
+      require('@assets/image/tshirt_3.jpg'),
+      require('@assets/image/tshirt_4.jpg'),
+    ],
+  },
+  {
+    id: 7,
     title: 'Stands Short Sleeve',
     price: '299000',
     category: 'Clothing',

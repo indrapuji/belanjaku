@@ -10,13 +10,11 @@ import {
 import React, {useState} from 'react';
 import productData from '@data/productData';
 import formatRupiah from '@utils/formatRupiah';
-import colors from 'src/themes/colors';
-import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import {iphoneHasNotch} from '@utils/deviceinfo';
+import FavProductCard from '@components/FavProductCard';
 
-const FavoriteScreen = ({navigation}) => {
+const FavoriteScreen = ({}) => {
   const {width: SCREEN_WIDTH} = useWindowDimensions();
-
-  const [checked, setChecked] = useState(false);
 
   return (
     <View style={styles.container}>
@@ -24,7 +22,7 @@ const FavoriteScreen = ({navigation}) => {
         style={{
           alignItems: 'center',
           backgroundColor: 'white',
-          paddingTop: 50,
+          paddingTop: iphoneHasNotch ? 50 : 20,
           paddingBottom: 20,
           width: SCREEN_WIDTH,
           borderBottomLeftRadius: 20,
@@ -42,7 +40,8 @@ const FavoriteScreen = ({navigation}) => {
           borderTopLeftRadius: 20,
           borderTopRightRadius: 20,
         }}>
-        {productData.map((item, index) => {
+        <FavProductCard dataProduct={productData} />
+        {/* {productData.map((item, index) => {
           return (
             <View key={index}>
               <View
@@ -125,7 +124,7 @@ const FavoriteScreen = ({navigation}) => {
               )}
             </View>
           );
-        })}
+        })} */}
       </ScrollView>
     </View>
   );

@@ -18,7 +18,8 @@ const HomeProductCard = ({dataProduct}) => {
       style={{
         flexDirection: 'row',
         flexWrap: 'wrap',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
+        marginLeft: 16,
       }}>
       {dataProduct &&
         dataProduct.map((item, i) => {

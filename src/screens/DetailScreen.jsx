@@ -6,17 +6,27 @@ import {
   useWindowDimensions,
   TouchableOpacity,
 } from 'react-native';
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import CustomHeader from '@components/CustomHeader';
 import DetailCarousel from '@components/DetailCarousel';
 import formatRupiah from '@utils/formatRupiah';
 import colors from 'src/themes/colors';
 
-
 const DetailScreen = ({route}) => {
   const {width: SCREEN_WIDTH} = useWindowDimensions();
   const {data} = route.params;
+  const [amount, setAmount] = useState(1);
   const scroll = useRef(new Animated.Value(0)).current;
+
+  const addAmount = () => {
+    setAmount(amount + 1);
+  };
+
+  const minAmount = () => {
+    if (amount > 1) {
+      setAmount(amount - 1);
+    }
+  };
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <Animated.ScrollView
@@ -123,13 +133,17 @@ const DetailScreen = ({route}) => {
               alignItems: 'center',
               borderRadius: 50,
             }}>
-            <TouchableOpacity style={{width: 30, alignItems: 'center'}}>
+            <TouchableOpacity
+              style={{width: 30, alignItems: 'center'}}
+              onPress={() => minAmount()}>
               <Text style={{color: 'black'}}>-</Text>
             </TouchableOpacity>
             <View style={{width: 30, alignItems: 'center'}}>
-              <Text style={{color: 'black'}}>{1}</Text>
+              <Text style={{color: 'black'}}>{amount}</Text>
             </View>
-            <TouchableOpacity style={{width: 30, alignItems: 'center'}}>
+            <TouchableOpacity
+              style={{width: 30, alignItems: 'center'}}
+              onPress={() => addAmount()}>
               <Text style={{color: 'black'}}>+</Text>
             </TouchableOpacity>
           </View>
